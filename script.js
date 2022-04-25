@@ -27,10 +27,13 @@ function game() {
     let computerScore = 0
 
     for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt('Choose Rock/Paper/Scissors', 'Rock')
-        let computerSelection = computerPlay()
+        let playerSelection
+        while (playerSelection != 'rock' && playerSelection != 'paper' && playerSelection != 'scissors') {
+            playerSelection = prompt('Choose Rock/Paper/Scissors', 'Rock')
 
-        playerSelection = playerSelection.toLowerCase()
+            playerSelection = playerSelection.toLowerCase()
+        }
+        let computerSelection = computerPlay()
 
         playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
         computerSelection = computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)

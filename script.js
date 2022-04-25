@@ -1,3 +1,5 @@
+game()
+
 function computerPlay() {
     const throwables = ['rock', 'paper', 'scissors']
 
@@ -6,24 +8,50 @@ function computerPlay() {
 }
 
 function playRound(playerSelection = '', computerSelection) {
-    playerSelection = playerSelection.toLowerCase()
-
-    playerSelection=playerSelection.charAt(0).toUpperCase()+playerSelection.slice(1);
-    computerSelection=computerSelection.charAt(0).toUpperCase()+computerSelection.slice(1);
 
     if (playerSelection === computerSelection) {
-        return `Draw! You both picked ${playerSelection}`
+        return 0
     }
 
-    if (playerSelection === 'Rock' && computerSelection === 'Paper' 
-    || playerSelection === 'Paper' && computerSelection === 'Scissors' 
-    || playerSelection === 'Scissors' && computerSelection === 'Rock') {
-        return `You lose! ${computerSelection} beats ${playerSelection}`
+    if (playerSelection === 'Rock' && computerSelection === 'Paper'
+        || playerSelection === 'Paper' && computerSelection === 'Scissors'
+        || playerSelection === 'Scissors' && computerSelection === 'Rock') {
+        return -1
     }
 
-    return `You win! ${playerSelection} beats ${computerSelection}`
+    return 1
 }
 
-const playerSelection='rock'
-const computerSelection=computerPlay()
-console.log(playRound(playerSelection,computerSelection))
+function game() {
+    let playerScore = 0
+    let computerScore = 0
+
+    for (let i = 0; i < 5; i++) {
+        let playerSelection = prompt('Choose Rock/Paper/Scissors', 'Rock')
+        let computerSelection = computerPlay()
+
+        playerSelection = playerSelection.toLowerCase()
+
+        playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
+        computerSelection = computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)
+
+        const result = playRound(playerSelection, computerSelection)
+
+        if (result === 0) {
+            console.log(`Draw! You both picked ${playerSelection}`)
+            i--
+        } else if (result === -1) {
+            console.log(`You lose! ${computerSelection} beats ${playerSelection}`)
+            computerScore++
+        } else {
+            console.log(`You win! ${playerSelection} beats ${computerSelection}`)
+            playerScore++
+        }
+    }
+
+    if (playerScore > computerScore) {
+        console.log(`Congratulations!!! You won ${playerScore} to ${computerScore}`)
+    } else {
+        console.log(`Unlucky! You lost ${computerScore} to ${playerScore}`)
+    }
+}

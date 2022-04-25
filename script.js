@@ -8,13 +8,16 @@ function computerPlay() {
 function playRound(playerSelection = '', computerSelection) {
     playerSelection = playerSelection.toLowerCase()
 
+    playerSelection=playerSelection.charAt(0).toUpperCase()+playerSelection.slice(1);
+    computerSelection=computerSelection.charAt(0).toUpperCase()+computerSelection.slice(1);
+
     if (playerSelection === computerSelection) {
         return `Draw! You both picked ${playerSelection}`
     }
 
-    if (playerSelection === 'rock' && computerSelection === 'paper' 
-    || playerSelection === 'paper' && computerSelection === 'scissors' 
-    || playerSelection === 'scissors' && computerSelection === 'rock') {
+    if (playerSelection === 'Rock' && computerSelection === 'Paper' 
+    || playerSelection === 'Paper' && computerSelection === 'Scissors' 
+    || playerSelection === 'Scissors' && computerSelection === 'Rock') {
         return `You lose! ${computerSelection} beats ${playerSelection}`
     }
 

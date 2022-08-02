@@ -42,6 +42,7 @@ body {
 
 .scoreText {
     flex: 1 1 auto;
+    margin-top: 5%;
 }
 
 .score {
@@ -50,6 +51,7 @@ body {
 
 .roundResult{
     flex: 1 1 auto;
+    max-height: 15%;
 }
 
 .scoreText,

@@ -16,7 +16,7 @@ function computerPlay() {
 function playRound(playerSelection = '', computerSelection) {
 
     if (playerSelection === computerSelection) {
-        roundResult.textContent = `Draw! Your ${playerSelection} is just as strong as the computer's.`
+        roundResult.textContent = `Draw! Your ${playerSelection} is just as strong as the computer's.`;
         return;
     }
 
@@ -26,13 +26,36 @@ function playRound(playerSelection = '', computerSelection) {
         computerScore++;
         score.textContent = `Player ${playerScore} - ${computerScore} Computer`;
         roundResult.textContent = `You've been defeated! The computer's ${computerSelection} utterly destroys your weak ${playerSelection}.`;
+        if (computerScore === 5) {
+            endGame();
+        }
         return;
     }
 
     playerScore++;
     score.textContent = `Player ${playerScore} - ${computerScore} Computer`;
     roundResult.textContent = `You win this round! Your ${playerSelection} is triumphant. Good choice!`;
+    if (playerScore === 5) {
+        endGame();
+    }
     return;
+}
+
+function endGame() {
+    buttons.forEach(disableButton);
+    if (playerScore === 5) {
+        roundResult.textContent = 'Congratulations, you are VICTORIOUS!';
+    } else {
+        roundResult.textContent = 'Unfortunate... maybe next time.';
+    }
+
+    const refresh = document.querySelector('.scoreText');
+    refresh.textContent = 'Reset';
+}
+
+function disableButton(item) {
+    item.disabled = true;
+    item.style.opacity = 0.3;
 }
 
 // function game() {

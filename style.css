@@ -1,9 +1,41 @@
-.selections{
+.selections {
     background-color: rgb(35, 20, 20);
-    height: 100vh;
-    width: 50vw;
+    display: flex;
+    flex-direction: column;
 }
 
-body{
+.results {
+    background-color: #adbdd5;
+}
+
+.selections,
+.results {
+    box-sizing: border-box;
+    flex: 1;
+}
+
+body {
     margin: 0;
+    display: flex;
+    height: 100vh;
+}
+
+.choice {
+    background-color: #adbdd5;
+    border-radius: 16px;
+    border: 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 24px;
+    width: 25%;
+    max-height: 20%;
+    min-height: 5rem;
+    min-width: 10rem;
+    padding: 16px 20px;
+    text-align: center;
+    flex: 1 1 auto;
+    margin: auto;
 }

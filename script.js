@@ -1,25 +1,33 @@
-game()
+//game()
+
+let playerScore = 0;
+let computerScore = 0;
 
 function computerPlay() {
-    const throwables = ['rock', 'paper', 'scissors']
+    const throwables = ['Rock', 'Paper', 'Scissors'];
 
-    let randomChoice = Math.floor(Math.random() * 3)
-    return throwables[randomChoice]
+    let randomChoice = Math.floor(Math.random() * 3);
+    return throwables[randomChoice];
 }
 
 function playRound(playerSelection = '', computerSelection) {
 
     if (playerSelection === computerSelection) {
-        return 0
+        console.log(`Player: ${playerScore} - Computer: ${computerScore}`);
+        return;
     }
 
     if (playerSelection === 'Rock' && computerSelection === 'Paper'
         || playerSelection === 'Paper' && computerSelection === 'Scissors'
         || playerSelection === 'Scissors' && computerSelection === 'Rock') {
-        return -1
+        computerScore++;
+        console.log(`Player: ${playerScore} - Computer: ${computerScore}`);
+        return;
     }
 
-    return 1
+    playerScore++;
+    console.log(`Player: ${playerScore} - Computer: ${computerScore}`);
+    return;
 }
 
 // function game() {
@@ -60,3 +68,6 @@ function playRound(playerSelection = '', computerSelection) {
 //         console.log(`Unlucky! You lost ${computerScore} to ${playerScore}`)
 //     }
 // }
+
+const buttons = document.querySelectorAll('.choice');
+buttons.forEach(button => button.addEventListener("click", function () { playRound(button.textContent, computerPlay()); }));

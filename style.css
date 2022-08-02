@@ -1,7 +1,5 @@
 .selections {
     background-color: rgb(35, 20, 20);
-    display: flex;
-    flex-direction: column;
 }
 
 .results {
@@ -12,6 +10,8 @@
 .results {
     box-sizing: border-box;
     flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 body {
@@ -38,4 +38,26 @@ body {
     text-align: center;
     flex: 1 1 auto;
     margin: auto;
+}
+
+.scoreText {
+    flex: 1 1 auto;
+}
+
+.score {
+    flex: 2 1 auto;
+}
+
+.roundResult{
+    flex: 1 1 auto;
+}
+
+.scoreText,
+.score,
+.roundResult {
+    color: #fff;
+    font-size: 40px;
+    font-weight: 600;
+    text-align: center;
+    min-width: 500px;
 }

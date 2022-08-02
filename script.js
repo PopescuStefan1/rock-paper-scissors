@@ -3,6 +3,9 @@
 let playerScore = 0;
 let computerScore = 0;
 
+const score = document.querySelector('.score');
+const roundResult = document.querySelector('.roundResult');
+
 function computerPlay() {
     const throwables = ['Rock', 'Paper', 'Scissors'];
 
@@ -13,7 +16,7 @@ function computerPlay() {
 function playRound(playerSelection = '', computerSelection) {
 
     if (playerSelection === computerSelection) {
-        console.log(`Player: ${playerScore} - Computer: ${computerScore}`);
+        roundResult.textContent = `Draw! Your ${playerSelection} is just as strong as the computer's.`
         return;
     }
 
@@ -21,12 +24,14 @@ function playRound(playerSelection = '', computerSelection) {
         || playerSelection === 'Paper' && computerSelection === 'Scissors'
         || playerSelection === 'Scissors' && computerSelection === 'Rock') {
         computerScore++;
-        console.log(`Player: ${playerScore} - Computer: ${computerScore}`);
+        score.textContent = `Player ${playerScore} - ${computerScore} Computer`;
+        roundResult.textContent = `You've been defeated! The computer's ${computerSelection} utterly destroys your weak ${playerSelection}.`;
         return;
     }
 
     playerScore++;
-    console.log(`Player: ${playerScore} - Computer: ${computerScore}`);
+    score.textContent = `Player ${playerScore} - ${computerScore} Computer`;
+    roundResult.textContent = `You win this round! Your ${playerSelection} is triumphant. Good choice!`;
     return;
 }
 
